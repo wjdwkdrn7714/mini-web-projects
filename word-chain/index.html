@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>끝말잇기</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🔗 끝말잇기</h1>
+      <p class="subtitle">15초 안에 다음 단어를 이어보세요</p>
+    </header>
+
+    <section class="status-bar">
+      <div class="status-item">
+        <span class="status-label">점수</span>
+        <span id="score" class="status-value">0</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">콤보</span>
+        <span id="combo" class="status-value combo">0x</span>
+      </div>
+      <div class="status-item">
+        <span class="status-label">최고 기록</span>
+        <span id="best" class="status-value">0</span>
+      </div>
+    </section>
+
+    <div class="timer-bar-wrap">
+      <div id="timerBar" class="timer-bar"></div>
+    </div>
+
+    <section class="chain-card">
+      <div id="currentWord" class="current-word">시작 버튼을 눌러주세요</div>
+      <div id="wordChain" class="word-chain"></div>
+    </section>
+
+    <form id="wordForm" class="word-form">
+      <input id="wordInput" type="text" placeholder="단어를 입력하세요" autocomplete="off" disabled>
+      <button type="submit" class="btn primary" id="submitBtn" disabled>입력</button>
+    </form>
+
+    <div id="message" class="message"></div>
+
+    <div class="controls">
+      <button id="startBtn" class="btn primary">게임 시작</button>
+    </div>
+
+    <details class="rules">
+      <summary>규칙 보기</summary>
+      <ul>
+        <li>이전 단어의 마지막 글자로 시작하는 단어를 입력하세요</li>
+        <li>두 글자 이상, 이미 사용한 단어는 사용할 수 없어요</li>
+        <li>제한 시간(15초) 안에 입력하지 못하면 게임이 끝나요</li>
+        <li>연속으로 성공하면 콤보가 쌓여 점수가 더 올라가요</li>
+      </ul>
+    </details>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

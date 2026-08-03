@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>뽀모도로 트래커</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🍅 뽀모도로 트래커</h1>
+      <p class="subtitle">집중하고, 기록하고, 성장하기</p>
+    </header>
+
+    <section class="timer-card">
+      <div class="mode-tabs">
+        <button class="mode-tab active" data-mode="focus" data-minutes="25">집중 25분</button>
+        <button class="mode-tab" data-mode="short" data-minutes="5">짧은 휴식 5분</button>
+        <button class="mode-tab" data-mode="long" data-minutes="15">긴 휴식 15분</button>
+      </div>
+
+      <div class="timer-display">
+        <svg class="progress-ring" width="220" height="220">
+          <circle class="progress-ring__bg" cx="110" cy="110" r="100"></circle>
+          <circle class="progress-ring__fg" cx="110" cy="110" r="100"></circle>
+        </svg>
+        <div class="timer-text">
+          <span id="timeLabel">25:00</span>
+          <span id="modeLabel" class="mode-label">집중 시간</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn primary">시작</button>
+        <button id="pauseBtn" class="btn" disabled>일시정지</button>
+        <button id="resetBtn" class="btn">초기화</button>
+      </div>
+    </section>
+
+    <section class="todo-card">
+      <h2>오늘 할 일</h2>
+      <form id="todoForm" class="todo-form">
+        <input id="todoInput" type="text" placeholder="할 일을 입력하세요..." autocomplete="off" required>
+        <button type="submit" class="btn primary small">추가</button>
+      </form>
+      <ul id="todoList" class="todo-list"></ul>
+    </section>
+
+    <section class="stats-card">
+      <h2>통계</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <span id="statSessions" class="stat-value">0</span>
+          <span class="stat-label">완료한 세션</span>
+        </div>
+        <div class="stat">
+          <span id="statFocusTime" class="stat-value">0분</span>
+          <span class="stat-label">총 집중 시간</span>
+        </div>
+        <div class="stat">
+          <span id="statStreak" class="stat-value">0</span>
+          <span class="stat-label">오늘 연속 세션</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

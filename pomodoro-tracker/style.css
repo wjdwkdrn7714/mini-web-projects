@@ -1,0 +1,199 @@
+:root {
+  --bg: #fdf6f0;
+  --card: #ffffff;
+  --text: #2d2a26;
+  --muted: #8a8078;
+  --accent: #e2543b;
+  --accent-soft: #f7d9d1;
+  --focus: #e2543b;
+  --short: #4a9d8e;
+  --long: #4472c4;
+  --border: #eee0d6;
+  --shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1815;
+    --card: #262220;
+    --text: #f2ece6;
+    --muted: #a89d92;
+    --accent: #ff7a5c;
+    --accent-soft: #4a2c26;
+    --border: #3a332e;
+    --shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Pretendard", "Segoe UI", "Malgun Gothic", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 32px 16px 64px;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+header { text-align: center; }
+header h1 { margin: 0 0 4px; font-size: 28px; }
+.subtitle { margin: 0; color: var(--muted); font-size: 14px; }
+
+.timer-card, .todo-card, .stats-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mode-tab {
+  flex: 1;
+  padding: 10px 6px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-tab.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.timer-display {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 20px;
+}
+
+.progress-ring { transform: rotate(-90deg); }
+.progress-ring__bg { fill: none; stroke: var(--border); stroke-width: 10; }
+.progress-ring__fg {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 628.3;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s;
+}
+
+.timer-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#timeLabel { font-size: 44px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.mode-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn:hover:not(:disabled) { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.btn.small { padding: 12px 16px; font-size: 14px; }
+
+.todo-card h2, .stats-card h2 { margin: 0 0 16px; font-size: 17px; }
+
+.todo-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.todo-form input:focus { outline: 2px solid var(--accent-soft); }
+
+.todo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--bg);
+}
+
+.todo-item.done .todo-text { text-decoration: line-through; color: var(--muted); }
+
+.todo-item .todo-text { flex: 1; font-size: 14px; word-break: break-word; }
+
+.todo-item .icon-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+}
+
+.todo-item .icon-btn:hover { color: var(--accent); }
+
+.todo-empty { color: var(--muted); font-size: 13px; text-align: center; padding: 12px 0; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-value { font-size: 22px; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 12px; color: var(--muted); }

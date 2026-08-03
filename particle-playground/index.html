@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파티클 플레이그라운드</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <div class="panel">
+    <h1>✨ 파티클 플레이그라운드</h1>
+    <p class="hint">클릭하거나 드래그해서 파티클을 뿌려보세요</p>
+
+    <div class="control">
+      <label>중력 <span id="gravityVal">0.10</span></label>
+      <input id="gravity" type="range" min="-0.5" max="0.5" step="0.01" value="0.1">
+    </div>
+    <div class="control">
+      <label>바람 <span id="windVal">0.00</span></label>
+      <input id="wind" type="range" min="-0.5" max="0.5" step="0.01" value="0">
+    </div>
+    <div class="control">
+      <label>분출량 <span id="rateVal">6</span></label>
+      <input id="rate" type="range" min="1" max="30" step="1" value="6">
+    </div>
+    <div class="control">
+      <label>수명 <span id="lifeVal">80</span></label>
+      <input id="life" type="range" min="20" max="240" step="10" value="80">
+    </div>
+
+    <div class="control">
+      <label>모드</label>
+      <div class="mode-buttons">
+        <button class="mode-btn active" data-mode="rainbow">🌈 무지개</button>
+        <button class="mode-btn" data-mode="fire">🔥 불꽃</button>
+        <button class="mode-btn" data-mode="ice">❄️ 얼음</button>
+        <button class="mode-btn" data-mode="galaxy">🌌 은하</button>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button id="clearBtn">전체 지우기</button>
+      <button id="toggleBtn">패널 숨기기</button>
+    </div>
+
+    <p class="count">파티클 수: <span id="particleCount">0</span></p>
+  </div>
+
+  <button id="showPanelBtn" class="show-panel-btn" hidden>⚙️</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
